@@ -92,13 +92,22 @@
     <rect>
      <x>0</x>
      <y>60</y>
-     <width>451</width>
-     <height>211</height>
+     <width>520</width>
+     <height>225</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <widget class="QLabel" name="label_3">
+      <property name="font">
+       <font>
+        <family>Consolas</family>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;GPL License&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
       <property name="text">
        <string>  Copyright (C) 2018 panda_2134
 

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>337</width>
+    <width>321</width>
     <height>300</height>
    </rect>
   </property>
@@ -18,13 +18,13 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>337</width>
+    <width>321</width>
     <height>300</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>337</width>
+    <width>321</width>
     <height>300</height>
    </size>
   </property>
@@ -76,7 +76,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>337</width>
+     <width>321</width>
      <height>23</height>
     </rect>
    </property>
@@ -84,6 +84,8 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionAbout"/>
+    <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
@@ -92,26 +94,83 @@
     </property>
     <addaction name="actionSettings"/>
    </widget>
-   <widget class="QMenu" name="menuAbout">
-    <property name="title">
-     <string>About</string>
-    </property>
-   </widget>
    <addaction name="menu"/>
    <addaction name="menuEdit"/>
-   <addaction name="menuAbout"/>
   </widget>
   <action name="actionExit">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Exit</string>
    </property>
   </action>
   <action name="actionSettings">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Settings</string>
    </property>
   </action>
+  <action name="actionAbout">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionExit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>160</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAbout</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>show_about()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>160</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSettings</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>show_settings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>160</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
