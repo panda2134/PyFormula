@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>321</width>
-    <height>300</height>
+    <width>400</width>
+    <height>320</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,14 +18,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>321</width>
-    <height>300</height>
+    <width>400</width>
+    <height>320</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>321</width>
-    <height>300</height>
+    <width>400</width>
+    <height>320</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -35,37 +35,74 @@
    <locale language="English" country="UnitedStates"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="verticalLayoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>110</y>
-      <width>171</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_4">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>10</y>
-      <width>321</width>
-      <height>101</height>
+      <x>20</x>
+      <y>20</y>
+      <width>351</width>
+      <height>257</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_1">
+    <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPlainTextEdit" name="plainTextEdit"/>
+      <widget class="QPlainTextEdit" name="plainTextEdit">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>347</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Consolas</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="imgLabel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>10000000</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="scaledContents">
+        <bool>false</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -76,7 +113,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>321</width>
+     <width>400</width>
      <height>23</height>
     </rect>
    </property>
@@ -165,6 +202,22 @@
     <hint type="sourcelabel">
      <x>-1</x>
      <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>160</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>plainTextEdit</sender>
+   <signal>textChanged()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>update_image()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
      <x>160</x>

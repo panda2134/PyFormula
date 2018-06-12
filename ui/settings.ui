@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SettingsWindow</class>
- <widget class="QWidget" name="SettingsWindow">
+ <class>SettingsDialog</class>
+ <widget class="QWidget" name="SettingsDialog">
   <property name="windowModality">
    <enum>Qt::NonModal</enum>
   </property>
@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>180</width>
-    <height>150</height>
+    <width>230</width>
+    <height>240</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,14 +21,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>180</width>
-    <height>150</height>
+    <width>230</width>
+    <height>240</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>180</width>
-    <height>150</height>
+    <width>230</width>
+    <height>240</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -42,8 +42,8 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>163</width>
-     <height>133</height>
+     <width>206</width>
+     <height>221</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -101,6 +101,20 @@
      </widget>
     </item>
     <item>
+     <widget class="QLabel" name="label_2">
+      <property name="maximumSize">
+       <size>
+        <width>140</width>
+        <height>16770000</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>For some config, 
+restart is needed.</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QPushButton" name="okButton">
@@ -111,6 +125,12 @@
       </item>
       <item>
        <widget class="QPushButton" name="cancelButton">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
          <string>Cancel</string>
         </property>
@@ -126,7 +146,7 @@
   <connection>
    <sender>okButton</sender>
    <signal>clicked()</signal>
-   <receiver>SettingsWindow</receiver>
+   <receiver>SettingsDialog</receiver>
    <slot>save_and_quit()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -142,7 +162,7 @@
   <connection>
    <sender>cancelButton</sender>
    <signal>clicked()</signal>
-   <receiver>SettingsWindow</receiver>
+   <receiver>SettingsDialog</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
