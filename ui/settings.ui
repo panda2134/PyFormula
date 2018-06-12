@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>230</width>
-    <height>240</height>
+       <height>280</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,13 +22,13 @@
   <property name="minimumSize">
    <size>
     <width>230</width>
-    <height>240</height>
+       <height>280</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>230</width>
-    <height>240</height>
+       <height>280</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -42,8 +42,8 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>206</width>
-     <height>221</height>
+        <width>212</width>
+        <height>262</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -70,6 +70,36 @@
       </property>
      </widget>
     </item>
+       <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                   <widget class="QLabel" name="label_3">
+                       <property name="minimumSize">
+                           <size>
+                               <width>150</width>
+                               <height>25</height>
+                           </size>
+                       </property>
+                       <property name="maximumSize">
+                           <size>
+                               <width>150</width>
+                               <height>25</height>
+                           </size>
+                       </property>
+                       <property name="text">
+                           <string>Render delay:</string>
+                       </property>
+                   </widget>
+               </item>
+               <item>
+                   <widget class="QSpinBox" name="delaySpinBox">
+                       <property name="maximum">
+                           <number>2000</number>
+                       </property>
+                   </widget>
+               </item>
+           </layout>
+       </item>
     <item>
      <widget class="QLabel" name="label">
       <property name="whatsThis">

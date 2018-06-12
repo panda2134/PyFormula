@@ -1,42 +1,29 @@
 from types import MethodType
-from urllib.error import URLError
 
-from PyQt5.QtCore import Qt, QTimer, QThread, pyqtSignal, QMimeData
-from PyQt5.QtGui import QPixmap, QImage, QDrag
+from PyQt5.QtCore import Qt, QTimer, QMimeData
+from PyQt5.QtGui import QPixmap, QDrag, QImage
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.uic import loadUi
 
 import config_handler
 from about_dialog import AboutDialog
+from image_thread import ImageDownloadThread
 from settings_dialog import SettingsDialog
-
-
-class ImageDownloadThread(QThread):
-    finish_signal = pyqtSignal(QImage)
-
-    def __init__(self, adp, text, parent=None):
-        super(ImageDownloadThread, self).__init__(parent)
-        self.adp = adp
-        self.text = text
-
-    def run(self):
-        try:
-            img = self.adp.parseLaTeX(self.text)
-        except URLError:
-            img = None
-        self.finish_signal.emit(img)
+from utils import to_transparent_image
 
 
 def mouseMoveEvent(self, event):
-    if event.buttons() != Qt.LeftButton:
+    if event.buttons() != Qt.LeftButton or self.window().img is None:
         return
 
+    img_transparent = to_transparent_image(self.window().img)
+
     mime = QMimeData()
-    mime.setImageData(self.pixmap()) # buggy
-    print(self.pixmap())
+    mime.setImageData(img_transparent)
 
     drag = QDrag(self)
     drag.setMimeData(mime)
+    drag.setPixmap(self.pixmap())
 
     drag.exec(Qt.MoveAction)
 
@@ -46,13 +33,24 @@ class MainWindow(QMainWindow):
     down_thread = None
     img = None
 
-    @staticmethod
-    def show_about():
-        AboutDialog().exec()
+    def init_window_flags(self, allow_top=True):
+        self.setWindowFlags(Qt.Window | Qt.CustomizeWindowHint | Qt.WindowTitleHint \
+                            | Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint)
+        if allow_top and config_handler.get_config_parser().getboolean('DEFAULT', 'AlwaysTop'):
+            self.setWindowFlags(Qt.WindowStaysOnTopHint)
 
-    @staticmethod
-    def show_settings():
+    def show_about(self):
+        self.init_window_flags(allow_top=False)
+        AboutDialog().exec()
+        self.init_window_flags(allow_top=True)
+        self.show()
+
+    def show_settings(self):
+        config_handler.get_config_parser().getboolean('DEFAULT', 'AlwaysTop')
+        self.init_window_flags(allow_top=False)
         SettingsDialog().exec()
+        self.init_window_flags(allow_top=True)
+        self.show()
 
     @staticmethod
     def scale_image_to_label(img, lbl):
@@ -65,11 +63,11 @@ class MainWindow(QMainWindow):
         else:
             return img.scaledToHeight(lbl_size.height(), Qt.SmoothTransformation)
 
-    def load_image_to_ui(self, img):
+    def load_image_to_ui(self, img: QImage):
         if not (img is None):
-            self.img = img
             img = MainWindow.scale_image_to_label(img, self.imgLabel)
             img = img.scaledToHeight(img.size().height() * .50, Qt.SmoothTransformation)
+            self.img = img
             pixmap = QPixmap.fromImage(img)
             self.imgLabel.setPixmap(pixmap)
             self.statusBar().showMessage('Connected.')
@@ -92,12 +90,12 @@ class MainWindow(QMainWindow):
             QTimer().singleShot(wait_time, self.update_impl)
 
     def __init__(self):
-        if config_handler.get_config_parser().getboolean('DEFAULT', 'AlwaysTop'):
-            super().__init__(None, Qt.WindowStaysOnTopHint)
-        else:
-            super().__init__()
+        # noinspection PyArgumentList
+        super().__init__()
+
+        self.init_window_flags()
 
         loadUi('ui/main.ui', self)
-        # self.imgLabel.setDragEnabled(True)
-        self.imgLabel.mouseMoveEvent = MethodType(mouseMoveEvent, self.imgLabel)
 
+        # inject the event handler
+        self.imgLabel.mouseMoveEvent = MethodType(mouseMoveEvent, self.imgLabel)
