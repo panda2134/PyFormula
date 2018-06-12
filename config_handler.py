@@ -8,7 +8,8 @@ defaults = {
     'AlwaysTop': True,
     'ListenToClip': True,
     'Render': 'Zhihu',
-    'WaitTime': 1000
+    'WaitTime': 1000,
+    'Sep': '$'
 }
 
 cfg = ConfigParser(defaults)

@@ -10,6 +10,7 @@ class SettingsDialog(QDialog):
         self.listenCheckbox.setChecked(config_handler.get_config_parser().getboolean('DEFAULT', 'ListenToClip'))
 
         self.delaySpinBox.setValue(config_handler.get_config_parser().getint('DEFAULT', 'WaitTime'))
+        self.sepPlainTextEdit.setPlainText(config_handler.get_config_parser().get('DEFAULT', 'Sep'))
 
         if config_handler.get_config_parser().get('DEFAULT', 'Render') == 'CodeCogs':
             self.codecogsRadio.setChecked(True)
@@ -23,6 +24,7 @@ class SettingsDialog(QDialog):
         config_handler.get_config_parser().set('DEFAULT', 'ListenToClip', str(self.listenCheckbox.isChecked()))
 
         config_handler.get_config_parser().set('DEFAULT', 'WaitTime', str(self.delaySpinBox.value()))
+        config_handler.get_config_parser().set('DEFAULT', 'Sep', self.sepPlainTextEdit.toPlainText())
 
         if self.codecogsRadio.isChecked():
             config_handler.get_config_parser().set('DEFAULT', 'Render', 'CodeCogs')

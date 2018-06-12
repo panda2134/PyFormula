@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>230</width>
-       <height>280</height>
+       <height>300</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,13 +22,13 @@
   <property name="minimumSize">
    <size>
     <width>230</width>
-       <height>280</height>
+       <height>300</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>230</width>
-       <height>280</height>
+       <height>300</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -43,7 +43,7 @@
      <x>10</x>
      <y>10</y>
         <width>212</width>
-        <height>262</height>
+        <height>277</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -100,13 +100,55 @@
                </item>
            </layout>
        </item>
+       <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <property name="spacing">
+                   <number>6</number>
+               </property>
+               <property name="sizeConstraint">
+                   <enum>QLayout::SetDefaultConstraint</enum>
+               </property>
+               <property name="bottomMargin">
+                   <number>9</number>
+               </property>
+               <item>
+                   <widget class="QLabel" name="label_4">
+                       <property name="maximumSize">
+                           <size>
+                               <width>16777215</width>
+                               <height>30</height>
+                           </size>
+                       </property>
+                       <property name="text">
+                           <string>Separator:</string>
+                       </property>
+                   </widget>
+               </item>
+               <item>
+                   <widget class="QPlainTextEdit" name="sepPlainTextEdit">
+                       <property name="minimumSize">
+                           <size>
+                               <width>140</width>
+                               <height>25</height>
+                           </size>
+                       </property>
+                       <property name="maximumSize">
+                           <size>
+                               <width>140</width>
+                               <height>25</height>
+                           </size>
+                       </property>
+                   </widget>
+               </item>
+           </layout>
+       </item>
     <item>
      <widget class="QLabel" name="label">
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Select the website used to render LaTeX Formulae.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="text">
-       <string>Render Engine</string>
+          <string>Render Engine:</string>
       </property>
      </widget>
     </item>

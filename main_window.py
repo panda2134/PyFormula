@@ -2,7 +2,7 @@ from types import MethodType
 
 from PyQt5.QtCore import Qt, QTimer, QMimeData
 from PyQt5.QtGui import QPixmap, QDrag, QImage
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.uic import loadUi
 
 import config_handler
@@ -63,7 +63,7 @@ class MainWindow(QMainWindow):
         else:
             return img.scaledToHeight(lbl_size.height(), Qt.SmoothTransformation)
 
-    def load_image_to_ui(self, img: QImage):
+    def load_image(self, img: QImage):
         if not (img is None):
             img = MainWindow.scale_image_to_label(img, self.imgLabel)
             img = img.scaledToHeight(img.size().height() * .50, Qt.SmoothTransformation)
@@ -74,13 +74,22 @@ class MainWindow(QMainWindow):
         else:
             self.img = None
             self.statusBar().showMessage('Disconnected.')
+
+        if config_handler.get_config_parser().getboolean('DEFAULT', 'ListenToClip'):
+            img_transparent = to_transparent_image(img)
+
+            mime = QMimeData()
+            mime.setImageData(img_transparent)
+
+            QApplication.clipboard().setMimeData(mime)
+
         self.waiting = False
 
     def update_impl(self):
         adp = config_handler.get_formula_adaptor()
         text = self.plainTextEdit.toPlainText()
         self.down_thread = ImageDownloadThread(adp, text)
-        self.down_thread.finish_signal.connect(self.load_image_to_ui)
+        self.down_thread.finish_signal.connect(self.load_image)
         self.down_thread.start()
 
     def update_image(self):
@@ -88,6 +97,12 @@ class MainWindow(QMainWindow):
             self.waiting = True
             wait_time = int(config_handler.get_config_parser().get('DEFAULT', 'WaitTime'))
             QTimer().singleShot(wait_time, self.update_impl)
+
+    def load_from_clipboard(self):
+        text = QApplication.clipboard().text()
+        sep = config_handler.get_config_parser().get('DEFAULT', 'Sep')
+        if len(text) >= 2 and text[0:len(sep)] == sep and text[-len(sep):] == sep:
+            self.plainTextEdit.setPlainText(text[len(sep):-len(sep)])
 
     def __init__(self):
         # noinspection PyArgumentList
@@ -99,3 +114,6 @@ class MainWindow(QMainWindow):
 
         # inject the event handler
         self.imgLabel.mouseMoveEvent = MethodType(mouseMoveEvent, self.imgLabel)
+
+        if config_handler.get_config_parser().getboolean('DEFAULT', 'ListenToClip'):
+            QApplication.clipboard().dataChanged.connect(self.load_from_clipboard)
