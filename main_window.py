@@ -65,8 +65,11 @@ class MainWindow(QMainWindow):
 
     def load_image(self, img: QImage):
         if not (img is None):
-            img = MainWindow.scale_image_to_label(img, self.imgLabel)
-            img = img.scaledToHeight(img.size().height() * .50, Qt.SmoothTransformation)
+            multiplier = config_handler.multipliers[config_handler.get_config_parser().get('DEFAULT', 'Render')]
+            img = img.scaledToHeight(img.size().height() * multiplier, Qt.SmoothTransformation)
+            if img.size().width() > self.imgLabel.size().width() \
+                    or img.size().height() > self.imgLabel.size().height():
+                img = MainWindow.scale_image_to_label(img, self.imgLabel)
             self.img = img
             pixmap = QPixmap.fromImage(img)
             self.imgLabel.setPixmap(pixmap)

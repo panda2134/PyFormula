@@ -12,6 +12,11 @@ defaults = {
     'Sep': '$'
 }
 
+multipliers = {
+    'Zhihu': .017442,
+    'CodeCogs': 1.00
+}
+
 cfg = ConfigParser(defaults)
 
 

@@ -71,6 +71,13 @@
      </widget>
     </item>
        <item>
+           <widget class="Line" name="line_2">
+               <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+               </property>
+           </widget>
+       </item>
+       <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
                <item>
                    <widget class="QLabel" name="label_3">
@@ -141,6 +148,13 @@
                    </widget>
                </item>
            </layout>
+       </item>
+       <item>
+           <widget class="Line" name="line">
+               <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+               </property>
+           </widget>
        </item>
     <item>
      <widget class="QLabel" name="label">

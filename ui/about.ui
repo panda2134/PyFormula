@@ -78,7 +78,7 @@
        </font>
       </property>
       <property name="text">
-       <string>v0.1</string>
+          <string>v1.0</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -97,6 +97,13 @@
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+           <widget class="Line" name="line">
+               <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+               </property>
+           </widget>
+       </item>
     <item>
      <widget class="QLabel" name="label_3">
       <property name="font">
