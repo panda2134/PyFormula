@@ -8,7 +8,7 @@
 
 (Network connection is required)
 
-## How to install
+## Installation
 
 1. Download [the release](https://github.com/panda2134/PyFormula/releases/)
 2. Run `PyFormula.exe`，no installation needed.
@@ -19,6 +19,7 @@
 - Drag the formula to where you want it to be.
 - Type the formula anywhere, copy it into clipboard, and paste the rendered version out (as shown above).
 
----
+## Copyright
 
-**License: GNU GPLv3**
+- Main code: **License: GNU GPLv3**
+- Zhihu & CodeCogs online APIs: All rights reserved to the companies.
