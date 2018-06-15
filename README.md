@@ -1,5 +1,5 @@
-<a href="https://github.com/panda2134/PyFormula/releases/"><img src=https://img.shields.io/badge/download-latest-brightgreen.svg"></img></a>
-![cnt](https://img.shields.io/github/downloads/panda2134/PyFormula/total.svg)
+<a href="https://github.com/panda2134/PyFormula/releases/"><img src="https://img.shields.io/badge/download-latest-brightgreen.svg"/></a>
+<img src="https://img.shields.io/github/downloads/panda2134/PyFormula/total.svg"/>
 
 -----
 
