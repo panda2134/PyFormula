@@ -10,7 +10,7 @@
 
 ## Installation
 
-1. Download [the release](https://github.com/panda2134/PyFormula/releases/)
+1. Download [the release](https://github.com/panda2134/PyFormula/releases/) and unzip.
 2. Run `PyFormula.exe`，no installation needed.
 
 ## How to use
