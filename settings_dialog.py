@@ -1,3 +1,4 @@
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
@@ -39,5 +40,6 @@ class SettingsDialog(QDialog):
         # noinspection PyArgumentList
         super(SettingsDialog, self).__init__(parent)
 
+        self.setWindowIcon(QIcon('ui/icon.png'))
         loadUi('ui/settings.ui', self)
         self.load_config()

@@ -1,7 +1,7 @@
 from types import MethodType
 
 from PyQt5.QtCore import Qt, QTimer, QMimeData
-from PyQt5.QtGui import QPixmap, QDrag, QImage
+from PyQt5.QtGui import QPixmap, QDrag, QImage, QIcon
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.uic import loadUi
 
@@ -113,6 +113,7 @@ class MainWindow(QMainWindow):
 
         self.init_window_flags()
 
+        self.setWindowIcon(QIcon('ui/icon.png'))
         loadUi('ui/main.ui', self)
 
         # inject the event handler

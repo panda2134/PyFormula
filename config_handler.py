@@ -7,7 +7,7 @@ from adaptor.zhihu_adaptor import ZhihuAdaptor
 defaults = {
     'AlwaysTop': True,
     'ListenToClip': True,
-    'Render': 'Zhihu',
+    'Render': 'CodeCogs',
     'WaitTime': 1000,
     'Sep': '$'
 }
