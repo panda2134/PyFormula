@@ -1,3 +1,7 @@
+[![Download](https://img.shields.io/badge/download-latest-brightgreen.svg](https://github.com/panda2134/PyFormula/releases/) ![cnt](https://img.shields.io/github/downloads/panda2134/PyFormula/total.svg)
+
+-----
+
 ![usage](docs/usage.gif)
 
 ## Functionalities
