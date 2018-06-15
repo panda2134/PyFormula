@@ -1,8 +1,8 @@
 ## Functionalities
 
 - Render LaTeX formulae in real time (using online APIs)
-- Listen to the clipboard and replace each `$$` formula you copied with the corresponding image (under development)
-- Drag-and-drop (under development)
+- Listen to the clipboard and replace each `$$` formula you copied with the corresponding image
+- Drag-and-drop
 
 ## How-to Guide
 
